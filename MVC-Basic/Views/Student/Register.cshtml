@@ -1,0 +1,86 @@
+﻿@using MVC_Basic.ViewModel
+@model StudentRegistrationViewModel
+@{
+    ViewBag.Title = "Student Registration";
+    Layout = "_Layout";
+}
+
+<form asp-action="Register" asp-controller="Student" method="post"
+      class="bg-white dark:bg-surface-dark rounded-xl border border-[#dbe0e6] dark:border-gray-700 shadow-sm overflow-hidden p-6 md:p-8 flex flex-col gap-8">
+
+    <!-- PERSONAL DETAILS -->
+    <div>
+        <h3 class="text-xl font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">person</span>
+            Personal Details
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <input asp-for="FirstName" placeholder="First Name" class="form-input h-12 rounded-lg" />
+            <input asp-for="LastName" placeholder="Last Name" class="form-input h-12 rounded-lg" />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <input asp-for="DateOfBirth" type="date" class="form-input h-12 rounded-lg" />
+
+            <select asp-for="Gender" class="form-select h-12 rounded-lg">
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>Prefer not to say</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- CONTACT INFORMATION -->
+    <div>
+        <h3 class="text-xl font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">contact_mail</span>
+            Contact Information
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <input asp-for="Email" type="email" placeholder="Email" class="form-input h-12 rounded-lg" />
+            <input asp-for="Phone" placeholder="Phone" class="form-input h-12 rounded-lg" />
+        </div>
+
+        <textarea asp-for="Address" placeholder="Address"
+                  class="form-textarea min-h-[100px] rounded-lg mt-4"></textarea>
+    </div>
+
+    <!-- ACADEMIC DETAILS -->
+    <div>
+        <h3 class="text-xl font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">school</span>
+            Academic Details
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <input asp-for="StudentId" placeholder="Student ID" class="form-input h-12 rounded-lg" />
+
+            <select asp-for="Course" class="form-select h-12 rounded-lg">
+                <option value="">Select Course</option>
+                <option value="CS">Computer Science</option>
+                <option value="ENG">Engineering</option>
+                <option value="BUS">Business</option>
+                <option value="ART">Fine Arts</option>
+                <option value="MED">Medicine</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="flex justify-end gap-4 pt-6 border-t">
+        <a asp-action="Index" asp-controller="Home"
+           class="px-6 h-12 flex items-center rounded-lg bg-gray-200">
+            Cancel
+        </a>
+
+        <button type="submit"
+                class="px-8 h-12 rounded-lg bg-primary text-white font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined">check</span>
+            Submit Registration
+        </button>
+    </div>
+</form>
