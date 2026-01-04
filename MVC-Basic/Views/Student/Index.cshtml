@@ -1,1 +1,34 @@
-﻿<h1> Student Form Works</h1>
+﻿@model IEnumerable<Student>
+
+<h2>Student List</h2>
+
+<p>
+    @Html.ActionLink("Add New Student", "Create")
+</p>
+
+<table class="table table-responsive table-striped">
+    <tr class="bg-info">
+        <th class="text-nowrap">Id</th>
+        <th class="text-nowrap">Name</th>
+        <th class="text-nowrap" Address</th>
+        <th class="text-nowrap">PhoneNo</th>
+        <th class="text-nowrap">DateOfBirth</th>
+        <th class="text-nowrap">Gender</th>
+        <th class="text-nowrap" Email</th>
+        <th class="text-nowrap">Course</th>
+    </tr>
+
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td class="text-nowrap">@student.Id</td>
+            <td class="text-nowrap">@student.FirstName @student.LastName</td>
+            <td class="text-nowrap">@student.Address</td>
+            <td class="text-nowrap">@student.Phone</td>
+            <td class="text-nowrap">@student.DateOfBirth.ToShortDateString()</td>
+            <td class="text-nowrap">@student.Gender</td>
+            <td class="text-nowrap">@student.Email</td>
+            <td class="text-nowrap">@student.Course</td>
+        </tr>
+    }
+</table>

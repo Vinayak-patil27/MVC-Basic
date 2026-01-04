@@ -1,0 +1,75 @@
+﻿@using MVC_Basic.ViewModel
+@model StudentCreateViewModel
+
+@{
+    ViewBag.Title = "Create Student";
+}
+
+<div class="card">
+@using (Html.BeginForm())
+{
+    <div class="card-header">
+
+            <h2>Create Student</h2>
+    </div>
+    <div class="card-body">
+        @Html.ValidationSummary(true)
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.EditorFor(m => m.FirstName)
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.LastName)
+            @Html.EditorFor(m => m.LastName)
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.DateOfBirth)
+            @Html.EditorFor(m => m.DateOfBirth)
+            @Html.ValidationMessageFor(m => m.DateOfBirth)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.Gender)
+            @Html.DropDownListFor(
+                    m => m.Gender,
+                    Html.GetEnumSelectList<MVC_Basic.Models.Gender>(),
+                    "-- Select Gender --",
+                    new { @class = "form-control" }
+                    )
+    @*         @Html.EnumDropDownListFor(m => m.Gender)
+     *@        @Html.ValidationMessageFor(m => m.Gender)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.Email)
+            @Html.EditorFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.Phone)
+            @Html.EditorFor(m => m.Phone)
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.Address)
+            @Html.EditorFor(m => m.Address)
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(m => m.Course)
+            @Html.EditorFor(m => m.Course)
+            @Html.ValidationMessageFor(m => m.Course)
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit">Save</button>
+    </div>
+}
+</div>

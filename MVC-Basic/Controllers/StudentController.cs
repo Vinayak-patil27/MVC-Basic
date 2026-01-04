@@ -1,33 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC_Basic.Models;
 using MVC_Basic.ViewModel;
 
 namespace MVC_Basic.Controllers
 {
     public class StudentController : Controller
     {
-        [HttpGet]
-        public IActionResult Register()
+        private static List<Student> students = new List<Student>();
+
+        public ActionResult Index()
+        {
+            return View(students);
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Register(StudentRegistrationViewModel model)
+        public ActionResult Create(StudentCreateViewModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
-            // Save to DB
+            students.Add(new Student
+            {
+                Id = students.Count + 1,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth,
+                Gender = model.Gender,
+                Email = model.Email,
+                Phone = model.Phone,
+                Address = model.Address,
+                Course = model.Course
+            });
 
-            return View("Success", model); // stay on same page
+            return RedirectToAction("Index");
         }
-
-        public IActionResult Success()
-        {
-            return Content("Registration successful!");
-        }
-
     }
 }
