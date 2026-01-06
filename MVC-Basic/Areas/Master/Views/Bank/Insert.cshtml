@@ -1,0 +1,40 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model Bank
+<div>
+	<div>
+		<h1>  Bank Master</h1>
+	</div>
+	<div >
+		@using (Html.BeginForm())
+		{
+			@Html.ValidationSummary(true)
+			<div >
+				<label>Enter Bank Name</label>
+				@Html.LabelFor(m => m.Name)
+				@Html.EditorFor(m => m.Name)
+				@Html.ValidationMessageFor(m => m.Name)
+			</div>
+			<div >
+				<label>Enter Bank Address</label>
+				@Html.LabelFor(m => m.Address)
+				@Html.EditorFor(m => m.Address)
+				@Html.ValidationMessageFor(m => m.Address)
+			</div>
+			<div>
+				<label>Enter Bank IFSC Code</label>
+				@Html.LabelFor(m => m.IFSCCode)
+				@Html.EditorFor(m => m.IFSCCode)
+				@Html.ValidationMessageFor(m => m.IFSCCode)
+			</div>
+			<div>
+				<label>Enter Bank MICR Code</label>
+				@Html.LabelFor(m => m.MICRCode)
+				@Html.EditorFor(m => m.MICRCode)
+				@Html.ValidationMessageFor(m => m.MICRCode)
+			</div>
+			<div>
+				<button type="submit">Save</button>
+			</div>
+		}
+	</div>
+</div>

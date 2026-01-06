@@ -1,0 +1,35 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model List<Bank>
+
+<h1>Bank Master</h1>
+<hr />
+<div >
+	<div>
+		<button>@Html.ActionLink("Add New Bank", "Insert")</button>
+	</div>
+	<div >
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>IFSC Code</th>
+					<th>MICR Code</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var rec in Model)
+				{
+					<tr>
+						<td>@rec.BankId</td>
+						<td>@rec.Name</td>
+						<td>@rec.Address</td>
+						<td>@rec.IFSCCode</td>
+						<td>@rec.MICRCode</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
