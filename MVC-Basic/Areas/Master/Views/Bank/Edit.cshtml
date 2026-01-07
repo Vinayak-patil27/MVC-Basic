@@ -1,0 +1,31 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model Bank
+<div>
+	<div>
+		<h1> Edit Bank Master</h1>
+	</div>
+	<div>
+		<form asp-action="Edit" method="post">
+			<div>
+				<label>Enter Bank Name</label>
+				<input type="text" asp-for="Name" />
+			</div>
+			<div>
+				<label>Enter Bank Address</label>
+				<input type="text" asp-for="Address" />
+
+			</div>
+			<div>
+				<label>Enter Bank IFSC Code</label>
+				<input type="text" asp-for="IFSCCode" />
+			</div>
+			<div>
+				<label>Enter Bank MICR Code</label>
+				<input type="text" asp-for="MICRCode" />
+			</div>
+			<div>
+				<button type="submit">Save</button>
+			</div>
+		</form>
+	</div>
+</div>
