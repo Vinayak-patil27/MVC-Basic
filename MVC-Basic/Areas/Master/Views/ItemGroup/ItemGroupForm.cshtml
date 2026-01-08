@@ -1,29 +1,28 @@
-﻿@using MVC_Basic.Areas.Master.Models
-@model ItemGroup
-<div>
-	<div>
-		<h1>  Item Group Master</h1>
-		<h2>@(Model.ItemGroupCode == 0 ? "Add Item Group" : "Edit Item Group")</h2>
+@model MVC_Basic.Areas.Master.Models.ItemGroup
 
-	</div>
-	<div>
-		<form asp-action="ItemGroupForm" asp-controller="ItemGroup" asp-area="Master" method="post">
-            <!-- REQUIRED FOR EDIT -->
-            <input type="hidden" asp-for="ItemGroupCode" />
+<h2>@(Model.ItemGroupCode == 0 ? "Add Item Group" : "Edit Item Group")</h2>
 
-            <div>
-                <label asp-for="ItemGroupName"></label>
-                <input asp-for="ItemGroupName" />
-            </div>
+<form asp-area="Master"
+      asp-controller="ItemGroup"
+      asp-action="Upsert"
+      method="post">
 
-            <div>
-                <label asp-for="ItemGroupDescription"></label>
-                <input asp-for="ItemGroupDescription" />
-            </div>
+    @Html.AntiForgeryToken()
 
-            <button type="submit">
-                @(Model.ItemGroupCode == 0 ? "Save" : "Update")
-            </button>
-		</form>
-	</div>
-</div>
+    <!-- REQUIRED FOR EDIT -->
+    <input type="hidden" asp-for="ItemGroupCode" />
+
+    <div>
+        <label asp-for="ItemGroupName"></label>
+        <input asp-for="ItemGroupName" />
+    </div>
+
+    <div>
+        <label asp-for="ItemGroupDescription"></label>
+        <input asp-for="ItemGroupDescription" />
+    </div>
+
+    <button type="submit">
+        @(Model.ItemGroupCode == 0 ? "Save" : "Update")
+    </button>
+</form>

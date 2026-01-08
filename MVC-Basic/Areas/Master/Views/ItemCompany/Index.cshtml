@@ -1,0 +1,48 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model List<ItemCompany>
+<div>
+	<div>
+		<h1>Item Company Master</h1>
+		<p></p>
+	</div>
+	<div>
+		<div>
+			<a asp-area="Master" asp-controller="ItemCompany" asp-action="ItemCompanyForm">
+				<button>Add New Group</button>
+			</a>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<td></td>
+					<td>Comapany Name</td>
+					<td>Description</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var rec in Model)
+				{
+					<tr>
+						<td>@rec.CompanyId</td>
+						<td>@rec.CompanyName</td>
+						<td>@rec.CompanyDescription</td>
+						<td>
+							<a asp-action="ItemCompanyForm" asp-route-id="@rec.CompanyId" asp-area="Master" asp-controller="ItemCompany"><Button>Edit</Button></a>
+							<form asp-area="Master"
+									asp-controller="ItemCompany"
+									asp-action="Delete"
+									asp-route-id="@rec.CompanyId"
+									method="post">
+								@Html.AntiForgeryToken()
+								<button type="submit" onclick="return confirm('Are you Sure Do you Want to Delete Record?')'">
+									Delete
+								</button>
+							</form>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

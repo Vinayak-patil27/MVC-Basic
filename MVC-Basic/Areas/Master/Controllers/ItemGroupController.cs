@@ -17,7 +17,7 @@ namespace MVC_Basic.Areas.Master.Controllers
 			return View(itemGroupslist);
 		}
 
-		[Area("Master")]
+		[HttpGet]
 		public IActionResult ItemGroupForm(int? id)
 		{
 			if (id == null || id == 0)
@@ -35,7 +35,6 @@ namespace MVC_Basic.Areas.Master.Controllers
 		}
 
 		[HttpPost]
-		[Area("Master")]
 		[ValidateAntiForgeryToken]
 		public IActionResult ItemGroupForm(ItemGroup model)
 		{
