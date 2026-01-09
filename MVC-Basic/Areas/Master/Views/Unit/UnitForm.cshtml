@@ -1,0 +1,47 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model Unit
+<div >
+    <div >
+        <h2>@(Model.UnitId == 0 ? "Add Item " : "Edit Item ")</h2>   
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="Unit"
+              asp-action="UnitForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="UnitId" />
+
+            <div>
+                <label asp-for="UnitName"></label>
+                <input asp-for="UnitName" />
+            </div>
+
+            <div>
+				<label asp-for="IsSubUnit"></label>
+                <input type="radio"
+                       asp-for="IsSubUnit"
+                       value="1"
+                       checked="@(Model.IsSubUnit == 1)" />
+                <label>Yes</label>
+
+                <input type="radio"
+                       asp-for="IsSubUnit"
+                       value="0"
+                       checked="@(Model.IsSubUnit == 0)" />
+                <label>No</label>
+
+            </div>
+            <div>
+                <label asp-for="SubUnitId"></label>
+                <input asp-for="SubUnitId" />
+            </div>
+            <button type="submit">
+                @(Model.UnitId == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model List<Unit>
+
+<div>
+	<div >
+		<h1 >Unit Master</h1>
+	</div>
+	<div>
+		<div >
+			<a asp-action="UnitForm" asp-area="Master" asp-controller="Unit">
+				<button >Add New Unit</button>
+			</a>
+		</div>
+		<div >
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>HasSubUnit</th>
+						<th>SubUnit</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var unit in Model)
+					{
+						<tr>
+							<td>@unit.UnitId</td>
+							<td>@unit.UnitName</td>
+							<td>@(unit.IsSubUnit==1? "Yes" : "No")</td>
+							<td>@unit.SubUnitId</td>
+							<td>
+								<a asp-action="UnitForm"
+								   asp-area="Master"
+								   asp-controller="Unit"
+								   asp-route-id="@unit.UnitId">
+									<button>Edit</button>
+							   </a>
+							   <form asp-action="Delete"
+								   asp-area="Master"
+								   asp-controller="Unit"
+								   asp-route-id="@unit.UnitId"
+								   method="post">
+									@Html.AntiForgeryToken()
+									<button onclick="return Conform('Are You sure, Do You Want to Delete?')">Delete</button>
+							   </form>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
