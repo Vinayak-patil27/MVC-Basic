@@ -1,0 +1,56 @@
+﻿@model MVC_Basic.Areas.Master.Models.Item
+
+<div >
+    <div >
+        <h2>@(Model.ItemCode == 0 ? "Add Item " : "Edit Item ")</h2>   
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="Item"
+              asp-action="ItemForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="ItemCode" />
+
+            <div>
+                <label asp-for="ItemName"></label>
+                <input asp-for="ItemName" />
+            </div>
+
+            <div>
+                <label asp-for="ItemGroupCode"></label>
+                <input asp-for="ItemGroupCode" />
+            </div>
+            <div>
+                <label asp-for="UnitCode"></label>
+                <input asp-for="UnitCode" />
+            </div>
+            <div>
+                <label asp-for="MRP"></label>
+                <input asp-for="MRP" />
+            </div>
+            <div>
+                <label asp-for="Rate"></label>
+                <input asp-for="Rate" />
+            </div>
+            <div>
+                <label asp-for="Barcode"></label>
+                <input asp-for="Barcode" />
+            </div>
+            <div>
+                <label asp-for="TaxID"></label>
+                <input asp-for="TaxID" />
+            </div>
+            <div>
+                <label asp-for="Description"></label>
+                <input asp-for="Description" />
+            </div>
+            <button type="submit">
+                @(Model.ItemCode == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>
