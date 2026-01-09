@@ -1,0 +1,55 @@
+﻿@model List<MVC_Basic.Areas.Master.Models.Tax>
+
+<div>
+	<div>
+		<h1>Unit Master</h1>
+	</div>
+	<div>
+		<div>
+			<a asp-action="TaxForm" asp-area="Master" asp-controller="Tax">
+				<button>Add New Unit</button>
+			</a>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th>Value</th>
+						<th>Show</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var tax in Model)
+					{
+						<tr>
+							<td>@tax.TaxId</td>
+							<td>@tax.Name</td>
+							<td>@tax.Value</td>
+							<td>@(tax.Show == 1 ? "Yes" : "No")</td>
+							<td>
+								<a asp-action="TaxForm"
+								   asp-area="Master"
+								   asp-controller="Tax"
+								   asp-route-id="@tax.TaxId">
+									<button>Edit</button>
+								</a>
+								<form asp-action="Delete"
+									  asp-area="Master"
+									  asp-controller="Tax"
+									  asp-route-id="@tax.TaxId"
+									  method="post">
+									@Html.AntiForgeryToken()
+									<button onclick="return Conform('Are You sure, Do You Want to Delete?')">Delete</button>
+								</form>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

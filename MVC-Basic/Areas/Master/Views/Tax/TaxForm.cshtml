@@ -1,0 +1,48 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model Tax
+<div>
+    <div>
+        <h2>@(Model.TaxId == 0 ? "Add Item " : "Edit Item ")</h2>
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="Tax"
+              asp-action="TaxForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="TaxId" />
+
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+            </div>
+
+            <div>
+                <label asp-for="Value"></label>
+                <input asp-for="Value" />
+            </div>
+
+            <div>
+                <label asp-for="Show"></label>
+                <input type="radio"
+                       asp-for="Show"
+                       value="1"
+                       checked="@(Model.Show == 1)" />
+                <label>Yes</label>
+
+                <input type="radio"
+                       asp-for="Show"
+                       value="0"
+                       checked="@(Model.Show == 0)" />
+                <label>No</label>
+
+            </div>
+            <button type="submit">
+                @(Model.TaxId == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>
