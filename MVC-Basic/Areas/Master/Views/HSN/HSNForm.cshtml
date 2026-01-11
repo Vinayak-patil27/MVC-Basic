@@ -1,0 +1,30 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model HSN
+<div>
+    <div>
+        <h2>@(Model.HsnId == 0 ? "Add Item " : "Edit Item ")</h2>
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="HSN"
+              asp-action="HSNForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="HsnId" />
+
+            <div>
+                <label asp-for="HsnName"></label>
+                <input asp-for="HsnName" />
+            <div>
+                <label asp-for="TaxId"></label>
+                <input asp-for="TaxId" />
+            </div>
+            <button type="submit">
+                @(Model.HsnId == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>

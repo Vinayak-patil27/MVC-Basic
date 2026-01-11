@@ -1,0 +1,54 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model List<HSN>
+
+<div>
+	<div>
+		<h1>HSN Master</h1>
+	</div>
+	<div>
+		<div>
+			<a asp-action="HSNForm" asp-area="Master" asp-controller="HSN">
+				<button>Add New HSN</button>
+			</a>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>HSN Code</th>
+						<th>Tax</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var hsn in Model)
+					{
+						<tr>
+							<td>@hsn.HsnId</td>
+							<td>@hsn.HsnName</td>
+							<td>@hsn.TaxId </td>
+							<td>
+								<a asp-action="HSNForm"
+								   asp-area="Master"
+								   asp-controller="HSN"
+								   asp-route-id="@hsn.HsnId">
+									<button>Edit</button>
+								</a>
+								<form asp-action="Delete"
+									  asp-area="Master"
+									  asp-controller="HSN"
+									  asp-route-id="@hsn.HsnId"
+									  method="post">
+									@Html.AntiForgeryToken()
+									<button onclick="return Conform('Are You sure, Do You Want to Delete?')">Delete</button>
+								</form>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
