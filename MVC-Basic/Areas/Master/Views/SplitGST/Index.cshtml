@@ -1,0 +1,56 @@
+﻿@model List<MVC_Basic.Areas.Master.Models.SplitGST>
+
+<div>
+	<div >
+		<h1 >Split GST Master</h1>
+	</div>
+	<div>
+		<div >
+			<a asp-action="SplitGstForm" asp-area="Master" asp-controller="SplitGST">
+				<button >Add New </button>
+			</a>
+		</div>
+		<div >
+			<table>
+				<thead>
+					<tr>
+						<th>Tax</th>
+						<th>Cgst</th>
+						<th>Sgst</th>
+						<th>igst</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var gst in Model)
+					{
+						<tr>
+							<td>@gst.GSTId</td>
+							<td>@gst.TaxId</td>
+							<td>@gst.cgst</td>
+							<td>@gst.sgst</td>
+							<td>@gst.igst</td>
+							<td>
+								<a asp-action="SplitGstForm"
+								   asp-area="Master"
+								   asp-controller="SplitGST"
+								   asp-route-id="@gst.GSTId">
+									<button>Edit</button>
+							   </a>
+							   <form asp-action="Delete"
+								   asp-area="Master"
+								   asp-controller="SplitGST"
+								   asp-route-id="@gst.GSTId"
+								   method="post">
+									@Html.AntiForgeryToken()
+									<button onclick="return Conform('Are You sure, Do You Want to Delete?')">Delete</button>
+							   </form>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

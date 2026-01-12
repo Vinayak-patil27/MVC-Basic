@@ -1,0 +1,45 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model SplitGST
+<div>
+    <div>
+        <h2>@(Model.GSTId == 0 ? "Add Item " : "Edit Item ")</h2>
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="SplitGST"
+              asp-action="SplitGstForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="GSTId" />
+
+            <div>
+                <label asp-for="TaxId"></label>
+                <input asp-for="TaxId" />
+            </div>
+
+            <div>
+                <label asp-for="ValideDate"></label> 
+                <input type="date" asp-for="ValideDate" />
+
+            </div>
+            <div>
+                <label asp-for="cgst"></label>
+                <input asp-for="cgst" />
+            </div>
+             <div>
+                <label asp-for="sgst"></label>
+                <input asp-for="sgst" />
+            </div>
+            <div>
+                <label asp-for="igst"></label>
+                <input asp-for="igst" />
+            </div>
+            <button type="submit">
+                @(Model.GSTId == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>
