@@ -1,0 +1,56 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model List<DeptMst>
+
+<div>
+	<div>
+		<h1>Department Master</h1>
+	</div>
+	<div>
+		<div>
+			<a asp-action="DeptForm" asp-area="Master" asp-controller="Department">
+				<button>Add New rec</button>
+			</a>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>HasSubrec</th>
+						<th>Subrec</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var rec in Model)
+					{
+						<tr>
+							<td>@rec.DeptCode</td>
+							<td>@rec.DeptName</td>
+							<td>@rec.DeptAddress</td>
+							<td>@rec.GSTNo</td>
+							<td>@rec.MobileNo</td>
+							<td>
+								<a asp-action="DeptForm"
+								   asp-area="Master"
+								   asp-controller="Department"
+								   asp-route-id="@rec.DeptCode">
+									<button>Edit</button>
+								</a>
+								<form asp-action="Delete"
+									  asp-area="Master"
+									  asp-controller="Department"
+									  asp-route-id="@rec.DeptCode"
+									  method="post">
+									@Html.AntiForgeryToken()
+									<button onclick="return Conform('Are You sure, Do You Want to Delete?')">Delete</button>
+								</form>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

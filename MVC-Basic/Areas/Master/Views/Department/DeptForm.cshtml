@@ -1,0 +1,40 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model DeptMst
+<div >
+    <div >
+        <h2>@(Model.DeptCode == 0 ? "Add New Department " : "Update Department ")</h2>   
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="Department"
+              asp-action="DeptForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="DeptCode" />
+
+            <div>
+                <label asp-for="DeptName"></label>
+                <input asp-for="DeptName" />
+            </div>
+
+            <div>
+				<label asp-for="DeptAddress"></label>
+                <input asp-for="DeptAddress" />
+            </div>
+            <div>
+                <label asp-for="GSTNo"></label>
+                <input asp-for="GSTNo" />
+            </div>
+            <div>
+                <label asp-for="MobileNo"></label>
+                <input asp-for="MobileNo" />
+            </div>
+            <button type="submit">
+                @(Model.DeptCode == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>
