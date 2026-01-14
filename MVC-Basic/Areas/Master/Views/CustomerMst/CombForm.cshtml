@@ -1,0 +1,76 @@
+﻿@model MVC_Basic.Areas.Master.Models.CustMst
+
+<div>
+    <div>
+        <h2>@(Model.CombId == 0 ? "Add New Record " : "Edit Record ")</h2>
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="CustomerMst"
+              asp-action="CombForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="CombId" />
+
+            <div>
+                <label asp-for="CombName"></label>
+                <input asp-for="CombName" />
+            </div>
+
+            <div>
+                <label asp-for="Address"></label>
+                <input asp-for="Address" />
+            </div>
+            <div>
+                <label asp-for="Mobno"></label>
+                <input asp-for="Mobno" />
+            </div>
+            <div>
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" />
+            </div>
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+            </div>
+            <div>
+                <label asp-for="AddharNo"></label>
+                <input asp-for="AddharNo" />
+            </div>
+            <div>
+                <label asp-for="DOB"></label>
+                <input asp-for="DOB" />
+            </div>
+            <div>
+                <label asp-for="GstNo"></label>
+                <input asp-for="GstNo" />
+            </div>
+             <div>
+                <label asp-for="Comm">Commision</label>
+                <input asp-for="Comm" />
+            </div>
+             <div>
+                <label asp-for="issupplier"></label>
+                <input asp-for="issupplier" />
+            </div>
+             <div>
+                <label asp-for="iscust"></label>
+                <input asp-for="iscust" />
+            </div>
+             <div>
+                <label asp-for="isDealer"></label>
+                <input asp-for="isDealer" />
+            </div>
+             <div>
+                <label asp-for="isemployee"></label>
+                <input asp-for="isemployee" />
+            </div>
+            <button type="submit">
+                @(Model.CombId == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>
