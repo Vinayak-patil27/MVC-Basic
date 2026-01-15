@@ -1,0 +1,32 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model VoucherType
+<div>
+    <div>
+        <h2>@(Model.VoucherId == 0 ? "Add New Voucher Type " : "Edit Voucher Type ")</h2>
+    </div>
+    <div>
+        <form asp-area="Master"
+              asp-controller="VoucherType"
+              asp-action="VoucherTypeForm"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- REQUIRED FOR EDIT -->
+            <input type="hidden" asp-for="VoucherId" />
+
+            <div>
+                <label asp-for="VoucherName"></label>
+                <input asp-for="VoucherName" />
+            </div>
+            
+            <div>
+                <label asp-for="VoucherShName"></label>
+                <input asp-for="VoucherShName" />
+            </div>
+            <button type="submit">
+                @(Model.VoucherId == 0 ? "Save" : "Update")
+            </button>
+        </form>
+    </div>
+</div>

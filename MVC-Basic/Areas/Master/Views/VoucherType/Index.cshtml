@@ -1,0 +1,54 @@
+﻿@using MVC_Basic.Areas.Master.Models
+@model List<VoucherType>
+
+<div>
+	<div>
+		<h1>Voucher Type Master</h1>
+	</div>
+	<div>
+		<div>
+			<a asp-action="VoucherTypeForm" asp-area="Master" asp-controller="VoucherType">
+				<button>Add New rec</button>
+			</a>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>HasSubrec</th>
+						<th>Subrec</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var rec in Model)
+					{
+						<tr>
+							<td>@rec.VoucherId</td>
+							<td>@rec.VoucherName</td>
+							<td>@rec.VoucherShName</td>
+							<td>
+								<a asp-action="VoucherTypeForm"
+								   asp-area="Master"
+								   asp-controller="VoucherType"
+								   asp-route-id="@rec.VoucherId">
+									<button>Edit</button>
+								</a>
+								<form asp-action="Delete"
+									  asp-area="Master"
+									  asp-controller="VoucherType"
+									  asp-route-id="@rec.VoucherId"
+									  method="post">
+									@Html.AntiForgeryToken()
+									<button onclick="return Conform('Are You sure, Do You Want to Delete?')">Delete</button>
+								</form>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
